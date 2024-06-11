@@ -392,6 +392,12 @@
 "Assets/Ejercicio3.cs"
 "Assets/Ejercicio4.cs"
 "Assets/Ejercicio5.cs"
+"Assets/Ejercicio6.cs"
+"Assets/SCRIPTS/ButtonComponent.cs"
+"Assets/SCRIPTS/InteractComponent.cs"
+"Assets/SCRIPTS/Player/CameraMovement1.cs"
+"Assets/SCRIPTS/Player/Interactor.cs"
+"Assets/SCRIPTS/Player/Player.cs"
 -langversion:9.0
 
 /deterministic
