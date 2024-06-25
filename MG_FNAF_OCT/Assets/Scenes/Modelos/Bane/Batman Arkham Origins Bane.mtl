@@ -1,0 +1,24 @@
+newmtl Model001_Material001
+map_Kd Bane1_Head_D.png
+map_bump Bane1_Head_n.png
+
+newmtl Model001_Material002
+map_Kd eye_D.png
+map_bump eye_n.png
+
+newmtl Model001_Material003
+map_Kd Bane1_Innards_D.png
+map_bump Bane1_Innards_n.png
+
+newmtl Model001_Material004
+map_Kd Bane1_Jacket_D.png
+map_bump Bane1_Jacket_n.png
+
+newmtl Model001_Material005
+map_Kd Bane1_Jacket_D.png
+map_bump Bane1_Jacket_n.png
+
+newmtl Model001_Material006
+map_Kd Bane2_Pants_D.png
+map_bump Bane2_Pants_n.png
+
