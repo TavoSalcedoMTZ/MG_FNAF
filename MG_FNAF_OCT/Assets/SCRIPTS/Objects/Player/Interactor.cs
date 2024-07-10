@@ -1,24 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
- //Funcion interaccion 
- public void Interaction()
+    void Update()
     {
-        //Si preciono el clic izquierdo
+        Interaction();
+    }
+
+    public void Interaction()
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            //Creamos un rato desde la camara hacia la posciion del cursor
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit _hit;
-            if(Physics.Raycast(ray, out _hit,100))
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                //Si el objeto tiene el objeto de interaccion
-                if(_hit.transform.gameObject.GetComponent<InteracttableObject>() != null) {
+                // Intenta obtener el componente InteractableObject del objeto golpeado
+                InteractableObject interactableObject = hit.transform.gameObject.GetComponent<InteractableObject>();
 
-                    _hit.transform.gameObject.GetComponent<InteracttableObject>().Interact();
+                // Si se encuentra el componente InteractableObject, llama a su método Interact
+                if (interactableObject != null)
+                {
+                    interactableObject.Interact();
                 }
             }
         }

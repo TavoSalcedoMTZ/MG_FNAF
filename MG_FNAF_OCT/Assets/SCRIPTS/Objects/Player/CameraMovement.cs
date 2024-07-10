@@ -4,43 +4,37 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    //Variables publicas
-    public float rotationSpeed, yMinRotation, yMaxRotation;
-    
+    // Variables públicas
+    public float rotationSpeed = 100f;
+    public float yMinRotation = -60f;
+    public float yMaxRotation = 60f;
 
-    //Variables privadas
+    // Variables privadas
     private float yRotation;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    // Update se llama una vez por frame
     void Update()
     {
-
+        CameraRotation();
     }
 
-    //Funcion para mover la camara
+    // Función para mover la cámara
     public void CameraRotation()
     {
-        //Verificamos si el cursor esta en alguno de los bordes de la pantalla
-        //Derecha
+        // Verificamos si el cursor está en alguno de los bordes de la pantalla
+        // Derecha
         if (Input.mousePosition.x >= Screen.width * 0.95f)
         {
             yRotation += rotationSpeed * Time.deltaTime;
         }
-        //Izquierda
+        // Izquierda
         else if (Input.mousePosition.x <= Screen.width * 0.05f)
         {
             yRotation -= rotationSpeed * Time.deltaTime;
         }
 
-        //Aplicamos el angulo de rotacion
+        // Aplicamos el ángulo de rotación
         yRotation = Mathf.Clamp(yRotation, yMinRotation, yMaxRotation);
-        Camera.main.transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+        transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
     }
 }

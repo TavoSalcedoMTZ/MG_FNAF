@@ -3,44 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class buttonComponent : MonoBehaviour
+public class ButtonComponent : MonoBehaviour
 {
-    //Variables publicas
-    public Material materialOff, materialOn, materialDisable;
-    public UnityEvent OnActivated, OnDesactived;
+    // Variables públicas para los materiales y eventos
+    public Material materialOff;
+    public Material materialOn;
+    public Material materialDisabled;
+    public UnityEvent OnActivated;
+    public UnityEvent OnDeactivated;
 
-    //Variables privadas
+    // Variables privadas
     private bool buttonState;
     private MeshRenderer meshRenderer;
 
-
-    // Start is called before the first frame update
+    // Inicialización
     void Start()
     {
-        //Inicializacion de variables
         buttonState = false;
         meshRenderer = GetComponent<MeshRenderer>();
-
-        //Inicia apagado
         meshRenderer.material = materialOff;
     }
 
+    // Método para cambiar el estado del botón
     public void Switch()
     {
-        //Si el boton esta encendio
-        if (buttonState)
+        if (!buttonState)
         {
-            //Se apaga
-            buttonState = false;
-            meshRenderer.material = materialOff;
-            OnDesactived.Invoke();
-        }
-        else //Si el boton esta apagado
-        {
-            //Se prende
             buttonState = true;
             meshRenderer.material = materialOn;
             OnActivated.Invoke();
         }
+        else
+        {
+            buttonState = false;
+            meshRenderer.material = materialOff;
+            OnDeactivated.Invoke();
+        }
+    }
+
+    // Método para desactivar el botón (cambia al materialDisabled)
+    public void DisableButton()
+    {
+        buttonState = false;
+        meshRenderer.material = materialDisabled;
     }
 }
