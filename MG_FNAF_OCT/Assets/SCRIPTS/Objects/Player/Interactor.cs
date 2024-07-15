@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
-    void Update()
+    public void Update() // Asegúrate de llamar a Interaction() en el método Update
     {
         Interaction();
     }
@@ -12,8 +14,7 @@ public class Interactor : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
+            if (Physics.Raycast(ray, out RaycastHit hit, 100))
             {
                 // Intenta obtener el componente InteractableObject del objeto golpeado
                 InteractableObject interactableObject = hit.transform.gameObject.GetComponent<InteractableObject>();

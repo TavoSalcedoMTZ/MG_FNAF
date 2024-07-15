@@ -4,20 +4,36 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private CameraMovement camaraMovement;
+    private CameraMovement cameraMovement; // Corrige el nombre de la variable para mantener consistencia
     private Interactor interactor;
 
-    // Start is called before the first frame update
     void Start()
     {
-        camaraMovement = GetComponent<CameraMovement>();
+        cameraMovement = GetComponent<CameraMovement>();
         interactor = GetComponent<Interactor>();
+
+        // Verifica si los componentes necesarios están presentes
+        if (cameraMovement == null)
+        {
+            Debug.LogError("CameraMovement component is missing from the player.");
+        }
+
+        if (interactor == null)
+        {
+            Debug.LogError("Interactor component is missing from the player.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        camaraMovement.CameraRotation();
-        interactor.Interaction();
+        if (cameraMovement != null)
+        {
+            cameraMovement.CameraRotation();
+        }
+
+        if (interactor != null)
+        {
+            interactor.Interaction();
+        }
     }
 }
