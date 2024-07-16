@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
-    public void Update() // Asegúrate de llamar a Interaction() en el método Update
-    {
-        Interaction();
-    }
-
+    // Funciones de interaccion
     public void Interaction()
     {
+        // Si presiono el clic izquiedo
         if (Input.GetMouseButtonDown(0))
         {
+            // Creamos un rayo desde la camara hacia la posicion del cursor
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, 100))
+            RaycastHit _hit;
+            if (Physics.Raycast(ray, out _hit, 100))
             {
-                // Intenta obtener el componente InteractableObject del objeto golpeado
-                InteractableObject interactableObject = hit.transform.gameObject.GetComponent<InteractableObject>();
-
-                // Si se encuentra el componente InteractableObject, llama a su método Interact
-                if (interactableObject != null)
+                // Si el objeto tiene el componente de interaccion
+                if (_hit.transform.gameObject.GetComponent<InteractableObject>() != null)
                 {
-                    interactableObject.Interact();
+                    _hit.transform.gameObject.GetComponent<InteractableObject>().Interact();
                 }
             }
         }
     }
 }
+
