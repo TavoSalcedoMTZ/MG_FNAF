@@ -9,6 +9,8 @@ public class InteractableObject : MonoBehaviour
     {
         if (OnInteract != null)
         {
+
+            Debug.Log("Prueba");
             OnInteract.Invoke();
         }
     }
