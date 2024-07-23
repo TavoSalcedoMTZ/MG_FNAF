@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +18,7 @@ public class EnergyManager : MonoBehaviour
     private bool isDischarged;
 
     // Singleton
-    public static EnergyManager Instance {get; private set;}
+    public static EnergyManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -64,7 +63,7 @@ public class EnergyManager : MonoBehaviour
         else
         {
             UpdateUI();
-            isDischarged=true;
+            isDischarged = true;
             OnDischarged.Invoke();
         }
     }
